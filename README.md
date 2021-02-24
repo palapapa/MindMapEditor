@@ -6,5 +6,6 @@
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/palapapa/MindMapEditor?style=for-the-badge)](https://codeclimate.com/github/palapapa/MindMapEditor)
 [![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/palapapa/MindMapEditor?style=for-the-badge)](https://codeclimate.com/github/palapapa/MindMapEditor)
 [![GitHub repo size](https://img.shields.io/github/repo-size/palapapa/MindMapEditor?style=for-the-badge)](https://github.com/palapapa/MindMapEditor/releases)
+[![Time Tracker](https://wakatime.com/badge/github/palapapa/MindMapEditor.svg)](https://wakatime.com/badge/github/palapapa/MindMapEditor)
 <br>
 A tool to make mind maps in Unity.
