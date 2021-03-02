@@ -6,7 +6,7 @@ using UnityEngine;
 public class DragSelection : MonoBehaviour
 {
     private LineRenderer lineRenderer;
-    private bool isInitialClick = true;
+    private bool isFirstClick = true;
     private Vector3 startPosition;
     private Vector3 endPosition;
 
@@ -22,10 +22,10 @@ public class DragSelection : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            if (isInitialClick)
+            if (isFirstClick)
             {
                 startPosition = Input.mousePosition;
-                isInitialClick = false;
+                isFirstClick = false;
             }
             else
             {
@@ -49,7 +49,7 @@ public class DragSelection : MonoBehaviour
         }
         else
         {
-            isInitialClick = true;
+            isFirstClick = true;
             lineRenderer.positionCount = 0;
         }
     }

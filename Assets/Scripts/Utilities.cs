@@ -63,7 +63,7 @@ public static class Utilities
             }
         }
         result.RemoveAt(result.Count - 1);
-        result.Add(vector3s.Last());
+        result.Add(vector3s.Last()); // to eliminate float arithmetic inaccuracy
         return result;
     }
 
