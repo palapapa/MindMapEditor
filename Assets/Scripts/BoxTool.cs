@@ -25,12 +25,14 @@ public class BoxTool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
         {
             gameObject.transform.Translate(clickTranslate);
             background.color = clickColor;
+            UserData.Instance.CursorMode = CursorMode.Box;
             isFirstClick = false;
         }    
         else
         {
             gameObject.transform.Translate(-clickTranslate);
             background.color = idleColor;
+            UserData.Instance.CursorMode = CursorMode.Selection;
             isFirstClick = true;
         }
     }
