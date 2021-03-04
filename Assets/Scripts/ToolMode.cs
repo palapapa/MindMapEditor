@@ -5,5 +5,6 @@ using UnityEngine;
 public enum ToolMode
 {
     Selection,
-    Box
+    Box,
+    Line
 }

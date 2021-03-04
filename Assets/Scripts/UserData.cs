@@ -31,6 +31,11 @@ public class UserData : MonoBehaviour
                     Cursor.SetCursor(boxCursor, new Vector2(boxCursor.width / 2, boxCursor.height / 2), UnityEngine.CursorMode.Auto);
                     break;
                 }
+                case ToolMode.Line:
+                {
+                    Cursor.SetCursor(boxCursor, new Vector2(boxCursor.width / 2, boxCursor.height / 2), UnityEngine.CursorMode.Auto);
+                    break;
+                }
             }
         }
     }

@@ -20,11 +20,8 @@ public class Toolbar : MonoBehaviour
         {
             foreach (Transform transform in content.transform)
             {
-                MonoBehaviour monoBehaviour = transform.gameObject.GetComponent<MonoBehaviour>();
-                if (monoBehaviour is IToolbarItem t)
-                {
-                    t.Deactivate();
-                }
+                IToolbarItem iti = transform.gameObject.GetComponent<IToolbarItem>();
+                iti?.Deactivate();
             }
             item.GameObject.transform.Translate(Constants.ToolbarButtonClickTranslation);
             item.IsActive = true;
