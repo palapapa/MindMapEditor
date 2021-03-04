@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CursorMode
+public enum ToolMode
 {
     Selection,
     Box

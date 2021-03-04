@@ -20,7 +20,7 @@ public class DragSelection : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0) && UserData.Instance.CursorMode == ToolMode.Selection)
         {
             if (isFirstClick)
             {

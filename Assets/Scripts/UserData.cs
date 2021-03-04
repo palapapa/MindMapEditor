@@ -9,8 +9,8 @@ public class UserData : MonoBehaviour
     [SerializeField]
     private Texture2D boxCursor;
     public static UserData Instance { get; set; }
-    private CursorMode cursorMode;
-    public CursorMode CursorMode
+    private ToolMode cursorMode;
+    public ToolMode CursorMode
     {
         get
         {
@@ -21,12 +21,12 @@ public class UserData : MonoBehaviour
             cursorMode = value;
             switch (value)
             {
-                case CursorMode.Selection:
+                case ToolMode.Selection:
                 {
                     Cursor.SetCursor(null, Vector2.zero, UnityEngine.CursorMode.Auto);
                     break;
                 }
-                case CursorMode.Box:
+                case ToolMode.Box:
                 {
                     Cursor.SetCursor(boxCursor, new Vector2(boxCursor.width / 2, boxCursor.height / 2), UnityEngine.CursorMode.Auto);
                     break;
