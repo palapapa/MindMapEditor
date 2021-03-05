@@ -7,7 +7,7 @@ public class UserData : MonoBehaviour
     [SerializeField]
     private Texture2D selectionCursor;
     [SerializeField]
-    private Texture2D boxCursor;
+    private Texture2D boxCursor = default;
     public static UserData Instance { get; set; }
     private ToolMode cursorMode;
     public ToolMode CursorMode

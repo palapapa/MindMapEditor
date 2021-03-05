@@ -253,6 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ab1eae3db42324885097bfb6422db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ToolMode: 2
 --- !u!114 &367122991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,7 +1000,6 @@ GameObject:
   - component: {fileID: 1423202790}
   - component: {fileID: 1423202789}
   - component: {fileID: 1423202788}
-  - component: {fileID: 1423202791}
   m_Layer: 5
   m_Name: Toolbar
   m_TagString: Untagged
@@ -1096,19 +1096,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423202786}
   m_CullTransparentMesh: 0
---- !u!114 &1423202791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423202786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2a62426318447c4e9869bc966dd7345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  content: {fileID: 1878931949}
 --- !u!1 &1458487070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,6 +1260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d1ef6e17bb6014a9b8a8c4fcc162da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ToolMode: 1
 --- !u!1 &1693066431
 GameObject:
   m_ObjectHideFlags: 0
