@@ -37,7 +37,7 @@ public abstract class ToolBarItemBase : MonoBehaviour, IPointerClickHandler, IPo
             GameObject.transform.Translate(Constants.ToolbarButtonClickTranslation);
             IsActive = true;
             Background.color = Constants.ToolbarButtonClickedColor;
-            UserData.Instance.CursorMode = ToolMode;
+            UserData.Instance.ToolMode = ToolMode;
         }
     }
 
@@ -48,7 +48,7 @@ public abstract class ToolBarItemBase : MonoBehaviour, IPointerClickHandler, IPo
             GameObject.transform.Translate(-Constants.ToolbarButtonClickTranslation);
             IsActive = false;
             Background.color = Constants.ToolbarButtonIdleColor;
-            UserData.Instance.CursorMode = ToolMode.Selection;
+            UserData.Instance.ToolMode = ToolMode.Selection;
         }
     }
 

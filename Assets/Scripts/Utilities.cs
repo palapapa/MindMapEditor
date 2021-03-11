@@ -6,15 +6,15 @@ using UnityEngine;
 public static class Utilities
 {
     /// <summary>
-    /// Convert a screen point to a world point with its z coordinate set to 0.
+    /// Calls <see cref="Camera.ScreenToWorldPoint(Vector3)"/> on <paramref name="position"/> then set the resulting <see cref="Vector3.z"/> to 0.
     /// </summary>
-    /// <param name="v">The <see cref="Vector3"/> to convert.</param>
-    /// <returns>The converted screen point.</returns>
-    public static Vector3 ScreenToWorldPoint2D(Vector3 v)
+    /// <param name="position"></param>
+    /// <returns></returns>
+    public static Vector3 ScreenToWorldPoint2D(Vector3 position)
     {
-        v = Camera.main.ScreenToWorldPoint(v);
-        v = new Vector3(v.x, v.y, 0);
-        return v;
+        Vector3 result = Camera.main.ScreenToWorldPoint(position);
+        result = new Vector3(result.x, result.y, 0);
+        return result;
     }
 
     /// <summary>
@@ -70,5 +70,12 @@ public static class Utilities
     public static T Last<T>(this IList<T> list)
     {
         return list[list.Count - 1];
+    }
+
+    public static void Swap<T>(ref T lhs, ref T rhs)
+    {
+        T temp = lhs;
+        lhs = rhs;
+        rhs = temp;
     }
 }

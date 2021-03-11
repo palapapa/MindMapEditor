@@ -9,16 +9,16 @@ public class UserData : MonoBehaviour
     [SerializeField]
     private Texture2D boxCursor = default;
     public static UserData Instance { get; set; }
-    private ToolMode cursorMode;
-    public ToolMode CursorMode
+    private ToolMode toolMode;
+    public ToolMode ToolMode
     {
         get
         {
-            return cursorMode;
+            return toolMode;
         }
         set
         {
-            cursorMode = value;
+            toolMode = value;
             switch (value)
             {
                 case ToolMode.Selection:
@@ -42,6 +42,6 @@ public class UserData : MonoBehaviour
 
     private void Start()
     {
-        Instance = GetComponent<UserData>();
+        Instance = this;
     }
 }
