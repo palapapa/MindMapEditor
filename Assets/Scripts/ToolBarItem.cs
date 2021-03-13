@@ -4,14 +4,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class ToolBarItemBase : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class ToolBarItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     protected bool IsActive { get; set; } = false;
-
     protected GameObject GameObject { get; set; }
-
     protected Image Background { get; set; }
-
     [SerializeField]
     protected ToolMode ToolMode;
 
@@ -28,7 +25,7 @@ public abstract class ToolBarItemBase : MonoBehaviour, IPointerClickHandler, IPo
         {
             foreach (Transform transform in transform.parent)
             {
-                ToolBarItemBase tbib = transform.gameObject.GetComponent<ToolBarItemBase>();
+                ToolBarItem tbib = transform.gameObject.GetComponent<ToolBarItem>();
                 if (tbib != null)
                 {
                     tbib.Deactivate();

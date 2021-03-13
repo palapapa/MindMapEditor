@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 367122992}
   - component: {fileID: 367122991}
   - component: {fileID: 367122990}
+  - component: {fileID: 367122993}
   m_Layer: 5
   m_Name: LineTool
   m_TagString: Untagged
@@ -253,7 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ab1eae3db42324885097bfb6422db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ToolMode: 2
 --- !u!114 &367122991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +292,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367122988}
   m_CullTransparentMesh: 0
+--- !u!114 &367122993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367122988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf4aed190360ed4489229bf6b9b2d229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ToolMode: 2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1429,6 +1442,7 @@ GameObject:
   - component: {fileID: 1605718381}
   - component: {fileID: 1605718380}
   - component: {fileID: 1605718382}
+  - component: {fileID: 1605718383}
   m_Layer: 5
   m_Name: BoxTool
   m_TagString: Untagged
@@ -1504,6 +1518,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4d1ef6e17bb6014a9b8a8c4fcc162da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1605718383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605718378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf4aed190360ed4489229bf6b9b2d229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ToolMode: 1
