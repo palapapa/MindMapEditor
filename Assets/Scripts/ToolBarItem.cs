@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ToolBarItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class ToolbarItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public static List<GameObject> Items { get; set; } = new List<GameObject>();
     protected bool IsActive { get; set; } = false;
@@ -27,7 +27,7 @@ public class ToolBarItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             foreach (Transform transform in transform.parent)
             {
-                ToolBarItem tbib = transform.gameObject.GetComponent<ToolBarItem>();
+                ToolbarItem tbib = transform.gameObject.GetComponent<ToolbarItem>();
                 if (tbib != null)
                 {
                     tbib.Deactivate();
@@ -83,7 +83,7 @@ public class ToolBarItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     {
         foreach (GameObject gameObject in Items)
         {
-            gameObject.GetComponent<ToolBarItem>().Deactivate();
+            gameObject.GetComponent<ToolbarItem>().Deactivate();
         }
     }
 }

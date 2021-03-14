@@ -23,14 +23,18 @@ public class BoxTool : MonoBehaviour
         dragRectDrawer.DrawRect(lineRenderer, Input.GetKey(KeyCode.Mouse0) && UserData.Instance.ToolMode == ToolMode.Box && Background.Instance.IsMouseOnBackground);
         if (Input.GetKeyUp(KeyCode.Mouse0) && UserData.Instance.ToolMode == ToolMode.Box && Background.Instance.IsMouseOnBackground)
         {
-            GameObject newBox = Instantiate(box, mapObjects.transform);
-            RectTransform rectTransform = newBox.GetComponent<RectTransform>();
-            rectTransform.pivot = Vector2.zero;
             Vector3 start = Utilities.ScreenToWorldPoint2D(dragRectDrawer.StartPosition);
             Vector3 end = Utilities.ScreenToWorldPoint2D(dragRectDrawer.EndPosition);
             Vector3 direction = end - start;
+            if (direction.x == 0 || direction.y == 0)
+            {
+                return;
+            }
             Vector3 originalStart = start;
             Vector3 originalEnd = end;
+            GameObject newBox = Instantiate(box, mapObjects.transform);
+            RectTransform rectTransform = newBox.GetComponent<RectTransform>();
+            rectTransform.pivot = Vector2.zero;
             if (direction.x < 0 && direction.y > 0) // quadrant 2
             {
                 start = new Vector3(originalEnd.x, originalStart.y, 0);

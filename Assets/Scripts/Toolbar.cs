@@ -8,7 +8,7 @@ public class Toolbar : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ToolBarItem.DeactivateAll();
+            ToolbarItem.DeactivateAll();
         }
     }
 }
