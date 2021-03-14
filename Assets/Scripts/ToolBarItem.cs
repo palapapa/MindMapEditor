@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ToolBarItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
+    public static List<GameObject> Items { get; set; } = new List<GameObject>();
     protected bool IsActive { get; set; } = false;
     protected GameObject GameObject { get; set; }
     protected Image Background { get; set; }
@@ -17,6 +18,7 @@ public class ToolBarItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         Background = GetComponent<Image>();
         Background.color = Constants.ToolbarButtonIdleColor;
         GameObject = gameObject;
+        Items.Add(gameObject);
     }
 
     protected void Activate()
@@ -74,6 +76,14 @@ public class ToolBarItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         if (!IsActive)
         {
             Background.color = Constants.ToolbarButtonIdleColor;
+        }
+    }
+
+    public static void DeactivateAll()
+    {
+        foreach (GameObject gameObject in Items)
+        {
+            gameObject.GetComponent<ToolBarItem>().Deactivate();
         }
     }
 }

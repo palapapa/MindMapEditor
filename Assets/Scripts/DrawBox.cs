@@ -5,9 +5,9 @@ using UnityEngine;
 public class DrawBox : MonoBehaviour
 {
     [SerializeField]
-    private GameObject box;
+    private GameObject box = default;
     [SerializeField]
-    private GameObject mapObjects;
+    private GameObject mapObjects = default;
     private LineRenderer lineRenderer;
     private DragRectDrawer dragRectDrawer = new DragRectDrawer();
 
