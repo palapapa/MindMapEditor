@@ -16,7 +16,7 @@ public class DragRectDrawer
     /// When <paramref name="condition"/> is <see langword="true"/>, draws a rectangle at the mouse's position. The rectangle updates on every call.
     /// </summary>
     /// <param name="lineRenderer">The line renderer used to draw the rect.</param>
-    /// <param name="condition">When <see langword="true""/>, draw the rect. When <see langword="false"/>, reset the rectangle.</param>
+    /// <param name="condition">When <see langword="true""/>, draw the rect. When <see langword="false"/>, reset the rect.</param>
     public void DrawRect(LineRenderer lineRenderer, bool condition)
     {
         lineRenderer.widthMultiplier = 0.1f;
