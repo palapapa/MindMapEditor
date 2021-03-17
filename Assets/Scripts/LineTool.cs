@@ -37,7 +37,7 @@ public class LineTool : MonoBehaviour
                 lineRenderer.SetPositions(new Vector3[2] { Utilities.ScreenToWorldPoint2D(startPosition), Utilities.ScreenToWorldPoint2D(endPosition) });
             }
         }
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyUp(KeyCode.Mouse0) && UserData.Instance.ToolMode == ToolMode.Line)
         {
             lineRenderer.positionCount = 0;
             if (startPosition != endPosition)
