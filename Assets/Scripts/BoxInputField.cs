@@ -8,26 +8,33 @@ using UnityEngine.EventSystems;
 public class BoxInputField : TMP_InputField
 {
     private GameObject caret;
+    private bool isFirstDoubleClick = true;
 
     public override void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log(eventData.clickCount);
         if (eventData.clickCount == 2)
         {
             caret.SetActive(true);
             ActivateInputField();
-            m_CaretSelectPosition = 0;
+            if (isFirstDoubleClick)
+            {
+                MoveTextEnd(false);
+                caretPosition = text.Length;
+                isFirstDoubleClick = false;
+            }
         }
     }
 
     public override void OnSelect(BaseEventData eventData)
     {
-        
+
     }
 
     public override void OnDeselect(BaseEventData eventData)
     {
+        base.OnDeselect(eventData);
         caret.SetActive(false);
+        isFirstDoubleClick = true;
     }
 
     protected override void Start()
