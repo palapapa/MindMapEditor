@@ -9,9 +9,10 @@ public class BoxTool : MonoBehaviour
     [SerializeField]
     private GameObject box = default;
     [SerializeField]
-    private GameObject mapObjects = default;
+    private GameObject boxes = default;
     private LineRenderer lineRenderer;
     private DragRectDrawer dragRectDrawer = new DragRectDrawer();
+    private Vector3 lastMousePosition;
 
     private void Start()
     {
@@ -20,8 +21,8 @@ public class BoxTool : MonoBehaviour
 
     private void Update()
     {
-        dragRectDrawer.DrawRect(lineRenderer, Input.GetKey(KeyCode.Mouse0) && UserData.Instance.ToolMode == ToolMode.Box && Background.Instance.IsMouseOnBackground);
-        if (Input.GetKeyUp(KeyCode.Mouse0) && UserData.Instance.ToolMode == ToolMode.Box && Background.Instance.IsMouseOnBackground)
+        dragRectDrawer.DrawRect(lineRenderer, Input.GetKey(KeyCode.Mouse0) && UserData.Instance.ToolMode == ToolMode.Box && !Toolbar.Instance.IsMouseOnToolbar);
+        if (Input.GetKeyUp(KeyCode.Mouse0) && UserData.Instance.ToolMode == ToolMode.Box && lastMousePosition == dragRectDrawer.EndPosition)
         {
             Vector3 start = Utilities.ScreenToWorldPoint2D(dragRectDrawer.StartPosition);
             Vector3 end = Utilities.ScreenToWorldPoint2D(dragRectDrawer.EndPosition);
@@ -32,7 +33,7 @@ public class BoxTool : MonoBehaviour
             }
             Vector3 originalStart = start;
             Vector3 originalEnd = end;
-            GameObject newBox = Instantiate(box, mapObjects.transform);
+            GameObject newBox = Instantiate(box, boxes.transform);
             RectTransform rectTransform = newBox.GetComponent<RectTransform>();
             rectTransform.pivot = Vector2.zero;
             if (direction.x < 0 && direction.y > 0) // quadrant 2
@@ -63,5 +64,10 @@ public class BoxTool : MonoBehaviour
             rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, end.x - start.x);
             rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, end.y - start.y);
         }
+    }
+
+    private void LateUpdate()
+    {
+        lastMousePosition = Input.mousePosition;
     }
 }

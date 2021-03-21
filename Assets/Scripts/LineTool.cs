@@ -9,7 +9,7 @@ public class LineTool : MonoBehaviour
     [SerializeField]
     private GameObject line = default;
     [SerializeField]
-    private GameObject mapObjects = default;
+    private GameObject lines = default;
     private LineRenderer lineRenderer;
     private bool isFirstClick = true;
     private Vector3 startPosition = new Vector3();
@@ -23,7 +23,7 @@ public class LineTool : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && UserData.Instance.ToolMode == ToolMode.Line && Background.Instance.IsMouseOnBackground)
+        if (Input.GetKey(KeyCode.Mouse0) && UserData.Instance.ToolMode == ToolMode.Line && !Toolbar.Instance.IsMouseOnToolbar)
         {
             if (isFirstClick)
             {
@@ -43,7 +43,7 @@ public class LineTool : MonoBehaviour
             if (startPosition != endPosition)
             {
                 GameObject newLine = Instantiate(line);
-                newLine.transform.SetParent(mapObjects.transform);
+                newLine.transform.SetParent(lines.transform);
                 RectTransform rectTransform = newLine.GetComponent<RectTransform>();
                 rectTransform.pivot = new Vector2(0, 0.5f);
                 Vector3 direction = Utilities.ScreenToWorldPoint2D(endPosition) - Utilities.ScreenToWorldPoint2D(startPosition);

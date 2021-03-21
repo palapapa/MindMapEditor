@@ -9,14 +9,24 @@ public class DragRectDrawer
     /// <see langword="false"/> when a rectangle is being drawn, <see langword="true"/> when not.
     /// </summary>
     public bool IsFirstClick { get; private set; } = true;
+
+    /// <summary>
+    /// This is reset when a new rect is being drawn.
+    /// </summary>
     public Vector3 StartPosition { get; private set; }
+
+    /// <summary>
+    /// This is reset when a new rect is being drawn.
+    /// </summary>
     public Vector3 EndPosition { get; private set; }
 
     /// <summary>
-    /// When <paramref name="condition"/> is <see langword="true"/>, draws a rectangle at the mouse's position. The rectangle updates on every call.
+    /// When <paramref name="condition"/> is <see langword="true"/>, draws a rectangle at the mouse's position. The rectangle updates on every call.<br/>
+    /// Updates <see cref="StartPosition"/> on first(the next call after <paramref name="condition"/> is false) call.<br/>
+    /// Updates <see cref="EndPosition"/> on subsequent calls.<br/>
     /// </summary>
     /// <param name="lineRenderer">The line renderer used to draw the rect.</param>
-    /// <param name="condition">When <see langword="true""/>, draw the rect. When <see langword="false"/>, reset the rect.</param>
+    /// <param name="condition">When <see langword="true"/>, draw the rect. When <see langword="false"/>, reset the rect.</param>
     public void DrawRect(LineRenderer lineRenderer, bool condition)
     {
         lineRenderer.widthMultiplier = 0.1f;
@@ -27,6 +37,7 @@ public class DragRectDrawer
             if (IsFirstClick)
             {
                 StartPosition = Input.mousePosition;
+                EndPosition = Input.mousePosition;
                 IsFirstClick = false;
             }
             else

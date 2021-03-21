@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 public class Background : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public static Background Instance { get; set; }
-    public bool IsMouseOnBackground { get; set; } = false;
+    public static Background Instance { get; private set; }
+    public bool IsMouseOnBackground { get; private set; } = false;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
