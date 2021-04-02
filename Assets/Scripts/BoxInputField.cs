@@ -4,41 +4,44 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 
-[AddComponentMenu("Custom/BoxInputField")]
-public class BoxInputField : TMP_InputField
+namespace MindMapEditor
 {
-    private GameObject caret;
-    private bool isFirstDoubleClick = true;
-
-    public override void OnPointerClick(PointerEventData eventData)
+    [AddComponentMenu("Custom/BoxInputField")]
+    public class BoxInputField : TMP_InputField
     {
-        if (eventData.clickCount == 2)
+        private GameObject caret;
+        private bool isFirstDoubleClick = true;
+
+        public override void OnPointerClick(PointerEventData eventData)
         {
-            caret.SetActive(true);
-            ActivateInputField();
-            if (isFirstDoubleClick)
+            if (eventData.clickCount == 2)
             {
-                MoveTextEnd(false);
-                caretPosition = text.Length;
-                isFirstDoubleClick = false;
+                caret.SetActive(true);
+                ActivateInputField();
+                if (isFirstDoubleClick)
+                {
+                    MoveTextEnd(false);
+                    caretPosition = text.Length;
+                    isFirstDoubleClick = false;
+                }
             }
         }
-    }
 
-    public override void OnSelect(BaseEventData eventData)
-    {
+        public override void OnSelect(BaseEventData eventData)
+        {
 
-    }
+        }
 
-    public override void OnDeselect(BaseEventData eventData)
-    {
-        base.OnDeselect(eventData);
-        caret.SetActive(false);
-        isFirstDoubleClick = true;
-    }
+        public override void OnDeselect(BaseEventData eventData)
+        {
+            base.OnDeselect(eventData);
+            caret.SetActive(false);
+            isFirstDoubleClick = true;
+        }
 
-    protected override void Start()
-    {
-        caret = Utilities.RecursiveFindChild(transform, "Caret").gameObject;
+        protected override void Start()
+        {
+            caret = Utilities.RecursiveFindChild(transform, "Caret").gameObject;
+        }
     }
 }

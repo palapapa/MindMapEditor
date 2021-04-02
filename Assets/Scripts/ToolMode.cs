@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ToolMode
+namespace MindMapEditor
 {
-    Selection,
-    Box,
-    Line
+    public enum ToolMode
+    {
+        Selection,
+        Box,
+        Line
+    }
 }

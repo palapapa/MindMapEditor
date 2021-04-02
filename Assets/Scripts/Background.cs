@@ -2,23 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-public class Background : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+
+namespace MindMapEditor
 {
-    public static Background Instance { get; private set; }
-    public bool IsMouseOnBackground { get; private set; } = false;
-
-    public void OnPointerEnter(PointerEventData eventData)
+    public class Background : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        IsMouseOnBackground = true;
-    }
+        public static Background Instance { get; private set; }
+        public bool IsMouseOnBackground { get; private set; } = false;
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        IsMouseOnBackground = false;
-    }
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            IsMouseOnBackground = true;
+        }
 
-    void Start()
-    {
-        Instance = this;
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            IsMouseOnBackground = false;
+        }
+
+        void Start()
+        {
+            Instance = this;
+        }
     }
 }

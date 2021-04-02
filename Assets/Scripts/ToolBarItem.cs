@@ -4,86 +4,89 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ToolbarItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+namespace MindMapEditor
 {
-    public static List<GameObject> Items { get; set; } = new List<GameObject>();
-    protected bool IsActive { get; set; } = false;
-    protected GameObject GameObject { get; set; }
-    protected Image Background { get; set; }
-    [SerializeField]
-    protected ToolMode ToolMode;
-
-    private void Start()
+    public class ToolbarItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
-        Background = GetComponent<Image>();
-        Background.color = Constants.ToolbarButtonIdleColor;
-        GameObject = gameObject;
-        Items.Add(gameObject);
-    }
+        public static List<GameObject> Items { get; set; } = new List<GameObject>();
+        protected bool IsActive { get; set; } = false;
+        protected GameObject GameObject { get; set; }
+        protected Image Background { get; set; }
+        [SerializeField]
+        protected ToolMode ToolMode;
 
-    protected void Activate()
-    {
-        if (!IsActive)
+        private void Start()
         {
-            foreach (Transform transform in transform.parent)
+            Background = GetComponent<Image>();
+            Background.color = Constants.ToolbarButtonIdleColor;
+            GameObject = gameObject;
+            Items.Add(gameObject);
+        }
+
+        protected void Activate()
+        {
+            if (!IsActive)
             {
-                ToolbarItem tbib = transform.gameObject.GetComponent<ToolbarItem>();
-                if (tbib != null)
+                foreach (Transform transform in transform.parent)
                 {
-                    tbib.Deactivate();
+                    ToolbarItem tbib = transform.gameObject.GetComponent<ToolbarItem>();
+                    if (tbib != null)
+                    {
+                        tbib.Deactivate();
+                    }
                 }
+                GameObject.transform.Translate(Constants.ToolbarButtonClickTranslation);
+                IsActive = true;
+                Background.color = Constants.ToolbarButtonClickedColor;
+                UserData.Instance.ToolMode = ToolMode;
             }
-            GameObject.transform.Translate(Constants.ToolbarButtonClickTranslation);
-            IsActive = true;
-            Background.color = Constants.ToolbarButtonClickedColor;
-            UserData.Instance.ToolMode = ToolMode;
         }
-    }
 
-    protected void Deactivate()
-    {
-        if (IsActive)
+        protected void Deactivate()
         {
-            GameObject.transform.Translate(-Constants.ToolbarButtonClickTranslation);
-            IsActive = false;
-            Background.color = Constants.ToolbarButtonIdleColor;
-            UserData.Instance.ToolMode = ToolMode.Selection;
+            if (IsActive)
+            {
+                GameObject.transform.Translate(-Constants.ToolbarButtonClickTranslation);
+                IsActive = false;
+                Background.color = Constants.ToolbarButtonIdleColor;
+                UserData.Instance.ToolMode = ToolMode.Selection;
+            }
         }
-    }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (!IsActive)
+        public void OnPointerClick(PointerEventData eventData)
         {
-            Activate();
+            if (!IsActive)
+            {
+                Activate();
+            }
+            else
+            {
+                Deactivate();
+            }
         }
-        else
-        {
-            Deactivate();
-        }
-    }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (!IsActive)
+        public void OnPointerEnter(PointerEventData eventData)
         {
-            Background.color = Constants.ToolbarButtonHoverColor;
+            if (!IsActive)
+            {
+                Background.color = Constants.ToolbarButtonHoverColor;
+            }
         }
-    }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (!IsActive)
+        public void OnPointerExit(PointerEventData eventData)
         {
-            Background.color = Constants.ToolbarButtonIdleColor;
+            if (!IsActive)
+            {
+                Background.color = Constants.ToolbarButtonIdleColor;
+            }
         }
-    }
 
-    public static void DeactivateAll()
-    {
-        foreach (GameObject gameObject in Items)
+        public static void DeactivateAll()
         {
-            gameObject.GetComponent<ToolbarItem>().Deactivate();
+            foreach (GameObject gameObject in Items)
+            {
+                gameObject.GetComponent<ToolbarItem>().Deactivate();
+            }
         }
     }
 }

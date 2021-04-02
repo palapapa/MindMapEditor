@@ -4,17 +4,20 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class Box : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+namespace MindMapEditor
 {
-    public bool IsMouseOnBox { get; private set; } = false;
-
-    public void OnPointerEnter(PointerEventData eventData)
+    public class Box : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        IsMouseOnBox = true;
-    }
+        public bool IsMouseOnBox { get; private set; } = false;
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        IsMouseOnBox = false;
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            IsMouseOnBox = true;
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            IsMouseOnBox = false;
+        }
     }
 }
