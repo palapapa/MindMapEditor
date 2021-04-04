@@ -12,6 +12,8 @@ namespace MindMapEditor
         private GameObject box = default;
         [SerializeField]
         private GameObject boxes = default;
+        [SerializeField]
+        private Canvas canvas = default;
         private LineRenderer lineRenderer;
         private DragRectDrawer dragRectDrawer = new DragRectDrawer();
         private Vector3 lastMousePosition;
@@ -54,7 +56,7 @@ namespace MindMapEditor
                 }
                 else
                 {
-                    if (!(direction.x > 0 && direction.y > 0)) // on axis
+                    if (!(direction.x > 0 && direction.y > 0)) // on axis(this might be unreachable since if it were on axis Update would have returned)
                     {
                         if (start.x > end.x || start.y > end.y)
                         {
@@ -65,6 +67,7 @@ namespace MindMapEditor
                 rectTransform.position = start;
                 rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, end.x - start.x);
                 rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, end.y - start.y);
+                rectTransform.localScale = canvas.transform.localScale.Inverse();
             }
         }
 
