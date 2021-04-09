@@ -6,15 +6,13 @@ namespace MindMapEditor
 {
     public class CanvasScaling : MonoBehaviour
     {
-        [SerializeField]
-        private Canvas canvas;
         private readonly float zoomAmount = 1.1f;
 
         private void Update()
         {
             if (Input.GetAxis(Constants.MouseScrollWheel) > 0 && Camera.main.orthographicSize - zoomAmount > 0)
             {
-                canvas.transform.localScale *= zoomAmount;
+                MapObjects.Instance.gameObject.transform.localScale *= zoomAmount;
                 /*
                 canvas.transform.position = Vector3.Lerp
                 (
@@ -26,7 +24,7 @@ namespace MindMapEditor
             }
             else if (Input.GetAxis(Constants.MouseScrollWheel) < 0)
             {
-                canvas.transform.localScale /= zoomAmount;
+                MapObjects.Instance.gameObject.transform.localScale /= zoomAmount;
             }
         }
     }
