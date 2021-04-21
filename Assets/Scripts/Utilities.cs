@@ -101,7 +101,7 @@ namespace MindMapEditor
             return null;
         }
 
-        public static Vector3 Inverse(this Vector3 vector3)
+        public static Vector3 GetReciprocal(this Vector3 vector3)
         {
             return new Vector3(1 / vector3.x, 1 / vector3.y, 1 / vector3.z);
         }

@@ -29,12 +29,12 @@ namespace MindMapEditor
             {
                 if (isFirstClick)
                 {
-                    startPosition = Input.mousePosition;
+                    startPosition = UserData.Instance.SnapPointInfo.SnappedPosition;
                     isFirstClick = false;
                 }
                 else
                 {
-                    endPosition = Input.mousePosition;
+                    endPosition = UserData.Instance.SnapPointInfo.SnappedPosition;
                     lineRenderer.positionCount = 2;
                     lineRenderer.SetPositions(new Vector3[2] { Utilities.ScreenToWorldPoint2D(startPosition), Utilities.ScreenToWorldPoint2D(endPosition) });
                 }

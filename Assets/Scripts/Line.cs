@@ -9,7 +9,7 @@ namespace MindMapEditor
         public List<Vector3> SnapPoints { get; private set; }
         private RectTransform rectTransform;
 
-        private void Start()
+        private void Awake()
         {
             rectTransform = GetComponent<RectTransform>();
             UpdateSnapPoints();

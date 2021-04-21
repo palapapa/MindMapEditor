@@ -13,12 +13,12 @@ namespace MindMapEditor
         /// <summary>
         /// The position the mouse is snapped to.
         /// </summary>
-        public Vector3 SnapPosition { get; set; }
+        public Vector3 SnappedPosition { get; set; }
 
-        public SnapPointInfo(GameObject snappedGameObject, Vector3 snapPosition)
+        public SnapPointInfo(Vector3 snapPosition, GameObject snappedGameObject)
         {
+            SnappedPosition = snapPosition;
             SnappedGameObject = snappedGameObject;
-            SnapPosition = snapPosition;
         }
     }
 }

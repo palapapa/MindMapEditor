@@ -9,11 +9,11 @@ namespace MindMapEditor
     public class ToolbarItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
         public static List<GameObject> Items { get; set; } = new List<GameObject>();
-        protected bool IsActive { get; set; } = false;
-        protected GameObject GameObject { get; set; }
-        protected Image Background { get; set; }
+        private bool IsActive { get; set; } = false;
+        private GameObject GameObject { get; set; }
+        private Image Background { get; set; }
         [SerializeField]
-        protected ToolMode ToolMode;
+        private ToolMode ToolMode;
 
         private void Start()
         {

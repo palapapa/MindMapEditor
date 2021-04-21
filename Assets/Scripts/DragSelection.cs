@@ -8,12 +8,13 @@ namespace MindMapEditor
     public class DragSelection : MonoBehaviour
     {
         private LineRenderer lineRenderer;
-        private DragRectDrawer dragRectDrawer = new DragRectDrawer();
+        private DragRectDrawer dragRectDrawer;
         private bool isFirstClick = true;
 
         private void Start()
         {
             lineRenderer = GetComponent<LineRenderer>();
+            dragRectDrawer = new DragRectDrawer(lineRenderer);
         }
 
         private void Update()
@@ -25,18 +26,18 @@ namespace MindMapEditor
                 {
                     if (!Boxes.Instance.IsMouseOnAnyBox())
                     {
-                        dragRectDrawer.DrawRect(lineRenderer, isDraw);
+                        dragRectDrawer.DrawRect(isDraw, false);
                         isFirstClick = false;
                     }
                 }
                 else
                 {
-                    dragRectDrawer.DrawRect(lineRenderer, isDraw);
+                    dragRectDrawer.DrawRect(isDraw, false);
                 }
             }
             else
             {
-                dragRectDrawer.DrawRect(lineRenderer, false); // force reset the drawer
+                dragRectDrawer.DrawRect(false, false); // force reset the drawer
                 isFirstClick = true;
             }
         }

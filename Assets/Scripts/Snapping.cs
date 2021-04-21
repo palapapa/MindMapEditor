@@ -14,7 +14,7 @@ namespace MindMapEditor
         private void Start()
         {
             snapPointImage.gameObject.SetActive(false);
-            snappingDetectionRange = snapPointImage.GetComponent<RectTransform>().rect.width;
+            snappingDetectionRange = 0.15f;
         }
 
         private void Update()
@@ -24,11 +24,11 @@ namespace MindMapEditor
         }
 
         /// <summary>
-        /// Returns the <see cref="SnapPointInfo"/> corresponding to the snap point the mouse is currently on. If the mouse isn't on any snap point, returns <see langword="null"/>. <br />
+        /// Returns the <see cref="SnapPointInfo"/> corresponding to the snap point the mouse is currently on. If the mouse isn't on any snap point, <see cref="SnapPointInfo.SnappedPosition"/> will be set to <see cref="Input.mousePosition"/> and <see cref="SnapPointInfo.SnappedGameObject"/> will be set to <see langword="null"/>. <br />
         /// The check is done recursively and isn't performed on the parents.
         /// </summary>
         /// <param name="mousePosition">The screen position of the mouse.</param>
-        /// <param name="parent">The parent transforms that the snap point check is performed on.</param>
+        /// <param name="parent">The parent transform that the snap point check is performed on.</param>
         /// <returns></returns>
         private SnapPointInfo GetSnapPointInfo(Vector3 mousePosition, Transform parent)
         {
@@ -44,13 +44,13 @@ namespace MindMapEditor
                         {
                             snapPointImage.gameObject.SetActive(true);
                             snapPointImage.transform.position = snapPoint;
-                            return new SnapPointInfo(transform.gameObject, snapPoint);
+                            return new SnapPointInfo(Camera.main.WorldToScreenPoint(snapPoint), transform.gameObject);
                         }
                     }
                 }
             }
             snapPointImage.gameObject.SetActive(false);
-            return null;
+            return new SnapPointInfo(Input.mousePosition, null);
         }
 
         private void UpdateAllSnapPoints(Transform parent)
